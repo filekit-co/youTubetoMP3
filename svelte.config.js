@@ -17,7 +17,7 @@ const config = {
 			'@src': path.resolve('/src'),
 			'@layouts': path.resolve('src/layouts'),
 			'@components': path.resolve('src/components'),
-			'@store': path.resolve('src/store'),
+			'@store': path.resolve('src/lib/store'),
 		}
 	}
 };

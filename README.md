@@ -6,9 +6,9 @@
 
 > YouTube Convert to MP3
 
-<!-- |           Landing Page           |           Convert Page           |
+|           Landing Page           |           Convert Page           |
 | :------------------------------: | :------------------------------: |
-| ![landing](./static/landing.png) | ![convert](./static/convert.png) | -->
+| ![landing](./static/landing.png) | ![convert](./static/landing.png) |
 
 #### Stack
 
