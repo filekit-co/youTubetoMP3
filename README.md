@@ -8,7 +8,7 @@
 
 |           Landing Page           |           Convert Page           |
 | :------------------------------: | :------------------------------: |
-| ![landing](./static/landing.png) | ![convert](./static/landing.png) |
+| ![landing](./static/landing.PNG) | ![convert](./static/landing.PNG) |
 
 #### Stack
 
