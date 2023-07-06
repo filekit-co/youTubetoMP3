@@ -8,7 +8,6 @@
     Dropdown,
     DropdownItem,
     Chevron,
-    DropdownDivider,
   } from "flowbite-svelte";
 </script>
 
