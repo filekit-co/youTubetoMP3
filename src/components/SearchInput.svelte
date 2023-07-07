@@ -1,10 +1,51 @@
-<script>
+<script lang="ts">
   import { Label, Input, Button } from "flowbite-svelte";
+  import Download from "./Download.svelte";
+  export let headText: String;
+
+  let videoURL: string = "";
+
+  function handleChangeURL(event) {
+    videoURL = event.target.value;
+  }
+
+  const dummyVideo = [
+    { tag: "MP4 auto quility", data: "MB" },
+    { tag: "1080p(.mp4)", data: "212.3MB" },
+    { tag: "720p(.mp4)", data: "83.9MB" },
+    { tag: "480p(.mp4)", data: "55.4MB" },
+    { tag: "360p(.mp4)", data: "MB" },
+    { tag: "240p(.mp4)", data: "28.4MB" },
+    { tag: "144p(.mp4)", data: "22.3MB" },
+    { tag: "144p(.3gp)", data: "MB" },
+  ];
+
+  const dummyAudio = [{ tag: "MP3 - 128kbps", data: "16.7MB" }];
+
+  const dummyData: Object[] = [
+    {
+      key: "Video",
+      value: [
+        { tag: "MP4 auto quility", data: "MB" },
+        { tag: "1080p(.mp4)", data: "212.3MB" },
+        { tag: "720p(.mp4)", data: "83.9MB" },
+        { tag: "480p(.mp4)", data: "55.4MB" },
+        { tag: "360p(.mp4)", data: "MB" },
+        { tag: "240p(.mp4)", data: "28.4MB" },
+        { tag: "144p(.mp4)", data: "22.3MB" },
+        { tag: "144p(.3gp)", data: "MB" },
+      ],
+    },
+    {
+      key: "Audio",
+      value: [{ tag: "MP3 - 128kbps", data: "16.7MB" }],
+    },
+  ];
 </script>
 
 <form class="py-12 px-12">
-  <Label for="search" class="block mb-6 text-2xl">YouTube URL</Label>
-  <Input id="search" placeholder="Search" size="lg">
+  <Label for="search" class="block mb-6 text-2xl">{headText}</Label>
+  <Input id="search" placeholder="Search" size="lg" on:change={handleChangeURL}>
     <svg
       slot="left"
       aria-hidden="true"
@@ -23,3 +64,7 @@
     <Button slot="right" size="sm" type="submit">Search</Button>
   </Input>
 </form>
+
+{#if videoURL !== ""}
+  <Download {dummyVideo} {dummyAudio} {dummyData} />
+{/if}
