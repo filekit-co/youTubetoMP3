@@ -28,7 +28,7 @@
           Resources
         </h2>
         <FooterLinkGroup>
-          <FooterLink liClass="mb-4" href="/">Filekit</FooterLink>
+          <FooterLink liClass="mb-4" href="/">Y2MP3</FooterLink>
           <FooterLink liClass="mb-4" href="/">Tailwind CSS</FooterLink>
         </FooterLinkGroup>
       </div>
@@ -50,7 +50,7 @@
           Legal
         </h2>
         <FooterLinkGroup>
-          <p>Filekit</p>
+          <p>Y2MP3</p>
           <FooterLink liClass="mb-4" href="/">Terms & Conditions</FooterLink>
         </FooterLinkGroup>
       </div>

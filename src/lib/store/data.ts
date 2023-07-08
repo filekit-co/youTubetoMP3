@@ -1,8 +1,10 @@
 import {writable} from 'svelte/store'
 
 export const youTubeURL = writable('')
+export const fileFormat = writable('')
+export const loading = writable(false)
 
-export const dummyVideo = writable([
+export const dummyVideo = ([
     { tag: "MP4 auto quility", data: "MB" },
     { tag: "1080p(.mp4)", data: "212.3MB" },
     { tag: "720p(.mp4)", data: "83.9MB" },
@@ -13,9 +15,9 @@ export const dummyVideo = writable([
     { tag: "144p(.3gp)", data: "MB" },
   ]);
 
-export const dummyAudio = writable([{ tag: "MP3 - 128kbps", data: "16.7MB" }]);
+export const dummyAudio = ([{ tag: "MP3 - 128kbps", data: "16.7MB" }]);
 
-export const dummyData: Object[] = writable([
+export const dummyData: Object[] = ([
   {
       key: "Video",
       value: [

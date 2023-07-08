@@ -18,7 +18,7 @@
     <span
       class="self-center whitespace-nowrap text-3xl font-semibold dark:text-white"
     >
-      Filekit
+      Y2MP3
     </span>
   </NavBrand>
   <NavHamburger on:click={toggle} />

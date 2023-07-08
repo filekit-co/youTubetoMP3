@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { dummyVideo, dummyAudio } from "$lib/store/data";
   import {
     Table,
     TableBody,
@@ -9,8 +10,6 @@
     Tabs,
     TabItem,
   } from "flowbite-svelte";
-  export let dummyVideo;
-  export let dummyAudio;
 
   //   const dummyVideo = {
   //     "MP4 auto quility": "MB",
@@ -66,7 +65,7 @@
             </TableHeadCell>
           </TableHead>
 
-          <TableBody class="divide-y">
+          <TableBody tableBodyClass="divide-y">
             {#each dummyVideo as video}
               <TableBodyRow>
                 <TableBodyCell>{video.tag}</TableBodyCell>
@@ -115,7 +114,7 @@
             </TableHeadCell>
           </TableHead>
 
-          <TableBody class="divide-y">
+          <TableBody tableBodyClass="divide-y">
             {#each dummyAudio as audio}
               <TableBodyRow>
                 <TableBodyCell>{audio.tag}</TableBodyCell>
