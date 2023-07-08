@@ -2,15 +2,29 @@
   import SearchInput from "@components/SearchInput.svelte";
   import Banner from "@components/Banner.svelte";
   import Feature from "@components/Feature.svelte";
-  import { Span } from "flowbite-svelte";
+  import { page } from "$app/stores";
+  import { youTubeURL } from "@store/data";
+  import { onMount } from "svelte";
+
+  const format = $page.params.slug.toUpperCase();
+
+  let URL = "";
+  onMount(() => {
+    URL = $youTubeURL;
+  });
 </script>
+
+<div>
+  {$youTubeURL}
+</div>
 
 <section class="bg-base-200">
   <div class="lg:py-4 mx-auto max-w-screen-xl px-4">
     <h2
-      class="mb-4 lg:mb-10 font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white lg: text-5xl"
+      class="flex justify-center mb-4 lg:mb-10 font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white lg: text-5xl"
     >
-      <Span gradient>Download Video and Audio from YouTube</Span>
+      YouTube to&nbsp;
+      <p class="text-teal-200">{format}</p>
     </h2>
   </div>
 </section>

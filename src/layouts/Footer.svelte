@@ -7,6 +7,7 @@
     FooterBrand,
     FooterIcon,
   } from "flowbite-svelte";
+  import logo from "$lib/assets/images/paper_folder.png";
 </script>
 
 <Footer footerType="socialmedia">
@@ -14,7 +15,7 @@
     <div class="mb-6 md:mb-0">
       <FooterBrand
         href="https://flowbite.com"
-        src="src/assets/images/paper_folder.png"
+        src={logo}
         alt="Flowbite Logo"
         name="Filekit"
       />

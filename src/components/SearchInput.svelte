@@ -1,70 +1,35 @@
 <script lang="ts">
-  import { Label, Input, Button } from "flowbite-svelte";
-  import Download from "./Download.svelte";
-  export let headText: String;
+  import { youTubeURL } from "@store/data";
+  import { Label, Button, Select, Search } from "flowbite-svelte";
+  import { FORMATS } from "$lib/store/data.js";
+  let selected = "mp4";
 
-  let videoURL: string = "";
+  let userInput: string = "";
 
-  function handleChangeURL(event) {
-    videoURL = event.target.value;
+  function handleChange(event) {
+    userInput = event.target.value;
   }
 
-  const dummyVideo = [
-    { tag: "MP4 auto quility", data: "MB" },
-    { tag: "1080p(.mp4)", data: "212.3MB" },
-    { tag: "720p(.mp4)", data: "83.9MB" },
-    { tag: "480p(.mp4)", data: "55.4MB" },
-    { tag: "360p(.mp4)", data: "MB" },
-    { tag: "240p(.mp4)", data: "28.4MB" },
-    { tag: "144p(.mp4)", data: "22.3MB" },
-    { tag: "144p(.3gp)", data: "MB" },
-  ];
-
-  const dummyAudio = [{ tag: "MP3 - 128kbps", data: "16.7MB" }];
-
-  const dummyData: Object[] = [
-    {
-      key: "Video",
-      value: [
-        { tag: "MP4 auto quility", data: "MB" },
-        { tag: "1080p(.mp4)", data: "212.3MB" },
-        { tag: "720p(.mp4)", data: "83.9MB" },
-        { tag: "480p(.mp4)", data: "55.4MB" },
-        { tag: "360p(.mp4)", data: "MB" },
-        { tag: "240p(.mp4)", data: "28.4MB" },
-        { tag: "144p(.mp4)", data: "22.3MB" },
-        { tag: "144p(.3gp)", data: "MB" },
-      ],
-    },
-    {
-      key: "Audio",
-      value: [{ tag: "MP3 - 128kbps", data: "16.7MB" }],
-    },
-  ];
+  function handleChangeURL(event) {
+    // console.log("typed url is = ", userInput);
+    // console.log("clicked format is = ", selected);
+    // let url = window.location.href;
+    youTubeURL.set(userInput);
+    window.location.replace(`/download/${selected}`);
+  }
 </script>
 
-<form class="py-12 px-12">
-  <Label for="search" class="block mb-6 text-2xl">{headText}</Label>
-  <Input id="search" placeholder="Search" size="lg" on:change={handleChangeURL}>
-    <svg
-      slot="left"
-      aria-hidden="true"
-      class="w-6 h-6 text-gray-500 dark:text-gray-400"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      ><path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-      /></svg
-    >
-    <Button slot="right" size="sm" type="submit">Search</Button>
-  </Input>
-</form>
+<form class="flex gap-2 px-12 py-2">
+  <Search class="h-16" on:change={handleChange}>
+    <Label class="mr-4">
+      <Select
+        placeholder="Format"
+        class="my-2 py-2"
+        items={FORMATS}
+        bind:value={selected}
+      />
+    </Label>
 
-{#if videoURL !== ""}
-  <Download {dummyVideo} {dummyAudio} {dummyData} />
-{/if}
+    <Button class="my-2 py-2" on:click={handleChangeURL}>Search</Button>
+  </Search>
+</form>

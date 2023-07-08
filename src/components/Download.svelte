@@ -11,7 +11,6 @@
   } from "flowbite-svelte";
   export let dummyVideo;
   export let dummyAudio;
-  export let dummyData;
 
   //   const dummyVideo = {
   //     "MP4 auto quility": "MB",

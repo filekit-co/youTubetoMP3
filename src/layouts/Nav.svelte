@@ -9,15 +9,12 @@
     DropdownItem,
     Chevron,
   } from "flowbite-svelte";
+  import logo from "$lib/assets/images/paper_folder.png";
 </script>
 
 <Navbar let:hidden let:toggle>
   <NavBrand href="/">
-    <img
-      src="src/assets/images/paper_folder.png"
-      class="w-10 h-10"
-      alt="Flowbite Logo"
-    />
+    <img src={logo} class="w-10 h-10" alt="Filekit Logo" />
     <span
       class="self-center whitespace-nowrap text-3xl font-semibold dark:text-white"
     >
