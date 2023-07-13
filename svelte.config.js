@@ -20,6 +20,10 @@ const config = {
 			'@components': path.resolve('src/components'),
 			'@store': path.resolve('src/lib/store'),
 		}
+	},
+	env: {
+		dir: '.',
+		publicPrefix: 'PUBLIC_'
 	}
 };
 

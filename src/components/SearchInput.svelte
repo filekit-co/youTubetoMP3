@@ -15,7 +15,7 @@
   function handleChangeURL(event: Event) {
     youTubeURL.set(userInput);
     fileFormat.set(selected);
-    goto(`/download/${selected}`);
+    goto(`/youtube/to-${selected}`);
     userInput = "";
   }
 </script>

@@ -11,11 +11,16 @@ export interface HeaderProps {
     description: string;
 }
 
-  export interface FeatureProps {
+export interface FeatureProps {
     head1: string;
     head2: string;
     description: string;
     subHead: string[];
     subImage: any[];
     subDescription: string[];
+}
+
+export type ConversionProps = {
+  headerProps: UpdateHeaderProps;
+  exts: [string, string]
 }
