@@ -3,7 +3,6 @@
   import Banner from "@components/Banner.svelte";
   import Feature from "@components/Feature.svelte";
   import { youTubeURL, fileFormat } from "@store/data";
-  import Download from "@components/Download.svelte";
 </script>
 
 <section class="bg-base-200">
@@ -20,11 +19,6 @@
 <!-- 사용자 url 입력하는 곳 -->
 <!-- <SearchInput headText="YouYube URL" /> -->
 <SearchInput />
-
-{#if $youTubeURL}
-  {$youTubeURL}
-  <Download />
-{/if}
 
 <!-- 회사 및 광고 -->
 <Banner />
