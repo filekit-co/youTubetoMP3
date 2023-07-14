@@ -3,7 +3,6 @@
   import Banner from "@components/Banner.svelte";
   import Feature from "@components/Feature.svelte";
   import { youTubeURL, fileFormat } from "@store/data";
-  import Download from "@components/Download.svelte";
 </script>
 
 <section class="bg-base-200">
