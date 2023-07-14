@@ -1,8 +1,24 @@
-<script>
+<script lang="ts">
   import SearchInput from "@components/SearchInput.svelte";
   import Banner from "@components/Banner.svelte";
   import Feature from "@components/Feature.svelte";
   import { Span } from "flowbite-svelte";
+  import type { VideoType } from "@store/types";
+  import Video from "@components/Video.svelte";
+
+  let videos: VideoType[] = [];
+  let video_id = 0;
+
+  function handleUrl(url) {
+    // console.log("Inputed data is: ", url.detail);
+    const data = {
+      id: ++video_id,
+      url: url.detail,
+    };
+
+    videos = [...videos, data];
+    // console.log(videos);
+  }
 </script>
 
 <section class="bg-base-200">
@@ -17,7 +33,13 @@
 
 <!-- 사용자 url 입력하는 곳 -->
 <!-- <SearchInput headText="YouYube URL" /> -->
-<SearchInput />
+<SearchInput on:handleUrl={handleUrl} />
+
+{#each videos as video (video.id)}
+  <div>
+    <Video video_id={video.id} video_url={video.url} />
+  </div>
+{/each}
 
 <!-- 회사 및 광고 -->
 <Banner />

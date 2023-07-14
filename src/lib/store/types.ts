@@ -24,3 +24,8 @@ export type ConversionProps = {
   headerProps: UpdateHeaderProps;
   exts: [string, string]
 }
+
+export interface VideoType {
+  url: string;
+  id: number;
+}

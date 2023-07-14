@@ -4,49 +4,23 @@ export const youTubeURL = writable('')
 export const fileFormat = writable('')
 export const loading = writable(false)
 
-export const dummyVideo = ([
-    { tag: "MP4 auto quility", data: "MB" },
-    { tag: "1080p(.mp4)", data: "212.3MB" },
-    { tag: "720p(.mp4)", data: "83.9MB" },
-    { tag: "480p(.mp4)", data: "55.4MB" },
-    { tag: "360p(.mp4)", data: "MB" },
-    { tag: "240p(.mp4)", data: "28.4MB" },
-    { tag: "144p(.mp4)", data: "22.3MB" },
-    { tag: "144p(.3gp)", data: "MB" },
-  ]);
-
-export const dummyAudio = ([{ tag: "MP3 - 128kbps", data: "16.7MB" }]);
-
-export const dummyData: Object[] = ([
-  {
-      key: "Video",
-      value: [
-        { tag: "MP4 auto quility", data: "MB" },
-        { tag: "1080p(.mp4)", data: "212.3MB" },
-        { tag: "720p(.mp4)", data: "83.9MB" },
-        { tag: "480p(.mp4)", data: "55.4MB" },
-        { tag: "360p(.mp4)", data: "MB" },
-        { tag: "240p(.mp4)", data: "28.4MB" },
-        { tag: "144p(.mp4)", data: "22.3MB" },
-        { tag: "144p(.3gp)", data: "MB" },
-      ],
-    },
-    {
-      key: "Audio",
-      value: [{ tag: "MP3 - 128kbps", data: "16.7MB" }],
-    },
-]);
+export const dummyData = {
+  "title": "BEENZINO - TRAIN(feat.C JAMM)",
+  "thumbUrl": "https://i.ytimg.com/vi/XwZpvOhEdOs/maxresdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=XwZpvOhEdOs",
+  "site": "youtube.com"
+}
 
 export const FORMATS = [
-    { value: "mp4", name: "MP4" },
-    { value: "avi", name: "AVI" },
-    { value: "mov", name: "MOV" },
-    { value: "wmv", name: "WMV" },
+    { value: "best", name: "BEST" },
+    { value: "3gp", name: "3GP" },
+    { value: "aac", name: "ACC" },
     { value: "flv", name: "FLV" },
+    { value: "m4a", name: "M4A" },
 
     { value: "mp3", name: "MP3" },
-    { value: "wav", name: "WAV" },
-    { value: "aac", name: "AAC" },
-    { value: "flac", name: "FLAC" },
+    { value: "mp4", name: "MP4" },
     { value: "ogg", name: "OGG" },
+    { value: "wav", name: "WAV" },
+    { value: "webm", name: "WEBM" },
 ];
