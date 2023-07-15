@@ -2,17 +2,9 @@
   import { env } from "$env/dynamic/public";
   import VideoDetail from "./VideoDetail.svelte";
   import VideoError from "./VideoError.svelte";
-  import VideoWaiting from "./VideoWaiting.svelte";
   import { loading } from "./loading";
   export let video_id: number;
   export let video_url: string;
-
-  interface VideoType {
-    title: string;
-    thumbUrl: string;
-    url: string;
-    site: string;
-  }
 
   // download request function
   // https://api-video-xgnu4lf2ea-uc.a.run.app/
@@ -35,9 +27,7 @@
   })();
 </script>
 
-{#await fetchInfo}
-  <!-- <VideoWaiting /> -->
-{:then data}
+{#await fetchInfo then data}
   <VideoDetail {data} {video_id} />
 {:catch error}
   <VideoError {error} {video_id} />

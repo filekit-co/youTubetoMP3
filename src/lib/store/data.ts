@@ -2,14 +2,18 @@ import {writable} from 'svelte/store'
 
 export const youTubeURL = writable('')
 export const fileFormat = writable('')
-export const loading = writable(false)
 
-export const dummyData = {
-  "title": "BEENZINO - TRAIN(feat.C JAMM)",
-  "thumbUrl": "https://i.ytimg.com/vi/XwZpvOhEdOs/maxresdefault.jpg",
-  "url": "https://www.youtube.com/watch?v=XwZpvOhEdOs",
-  "site": "youtube.com"
-}
+export const global_selectedVideoId = writable(0)
+export const global_selectedVideoImg = writable('')
+export const global_selectedVideoUrl = writable('')
+export const global_selectedAudio = writable(
+    {
+        id: 0,
+        url: '',
+        thumbUrl: '',
+        title: '',
+    }
+)
 
 export const FORMATS = [
     { value: "best", name: "BEST" },

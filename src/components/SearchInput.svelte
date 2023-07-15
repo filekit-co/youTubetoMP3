@@ -17,13 +17,8 @@
   }
 
   function handleClick(event: Event) {
-    // console.log("inputed value is: ", urlInput);
     dispatch("handleUrl", urlInput);
     urlInput = "";
-    // youTubeURL.set(urlInput);
-    // fileFormat.set(selected);
-    // goto(`/youtube/to-${selected}`);
-    // urlInput = "";
   }
 </script>
 
@@ -34,15 +29,6 @@
     placeholder="Please Type YouTube URL"
     value={urlInput}
   >
-    <!-- <Label class="sm:mr-0 md:mr-2 lg:mr-2">
-      <Select
-        placeholder="Format"
-        class="my-2 py-2"
-        items={FORMATS}
-        bind:value={selected}
-      />
-    </Label> -->
-
     <Button class="my-2 py-2" on:click={handleClick}>Search</Button>
   </Search>
 </form>
