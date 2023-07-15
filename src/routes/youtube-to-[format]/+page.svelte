@@ -1,12 +1,48 @@
 <script lang="ts">
+  import { env } from "$env/dynamic/public";
   import Banner from "@components/Banner.svelte";
   import Feature from "@components/Feature.svelte";
   import { page } from "$app/stores";
   import { global_selectedAudio } from "@store/data";
+  import { loading } from "@components/loading";
 
   let params = $page.params.format;
+  let resultFileURL: string;
 
   $: $global_selectedAudio;
+
+  // https://api-video-xgnu4lf2ea-uc.a.run.app/download/audio?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DgdZLi9oWNZg&filename=bts&to=mp3
+  const fetchDownloadAudio = (async () => {
+    $loading = true;
+    try {
+      const video_url = $global_selectedAudio.url;
+      const filename = $global_selectedAudio.title;
+      const to = params;
+      const response = await fetch(
+        `${env.PUBLIC_API_AUDIO_DOWNLOAD_URL}?url=${video_url}&filename=${filename}&to=${to}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Get Audio data failed.");
+      }
+
+      const blob = await response.blob();
+      const file = new File([blob], `${filename}`, { type: blob.type });
+      // console.log(file);
+      resultFileURL = URL.createObjectURL(file);
+    } catch (error) {
+      console.error(error);
+      alert(error);
+    }
+    $loading = false;
+  })();
 </script>
 
 <section class="bg-base-200">
@@ -43,6 +79,19 @@
       </div>
     </a>
   </div>
+
+  {#await fetchDownloadAudio then}
+    <div>
+      <a
+        target="_blank"
+        rel="noopener"
+        href={resultFileURL}
+        download={$global_selectedAudio.title}
+      >
+        <p class="text-sm sm:text-sm md:text-base lg:text-lg">Download</p>
+      </a>
+    </div>
+  {/await}
 </div>
 
 <!-- Todo: table -->

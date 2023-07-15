@@ -49,7 +49,7 @@
       />
 
       <GradientButton on:click={handleClick} class="w-full" color="greenToBlue"
-        >Download</GradientButton
+        >Convert</GradientButton
       >
     </Label>
   </div>

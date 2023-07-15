@@ -13,7 +13,7 @@
   const fetchInfo = (async () => {
     $loading = true;
     const response = await fetch(
-      `${env.PUBLIC_API_URL}/info?url=${video_url}`,
+      `${env.PUBLIC_API_INFO_URL}?url=${video_url}`,
       {
         method: "POST",
         headers: {
