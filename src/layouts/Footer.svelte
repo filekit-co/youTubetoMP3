@@ -14,7 +14,7 @@
   <div class="md:flex md:justify-between">
     <div class="mb-6 md:mb-0">
       <FooterBrand
-        href="https://flowbite.com"
+        href="https://filekit.co"
         src={logo}
         alt="Flowbite Logo"
         name="Filekit"
@@ -28,7 +28,7 @@
           Resources
         </h2>
         <FooterLinkGroup>
-          <FooterLink liClass="mb-4" href="/">Y2MP3</FooterLink>
+          <FooterLink liClass="mb-4" href="/">Filekit</FooterLink>
           <FooterLink liClass="mb-4" href="/">Tailwind CSS</FooterLink>
         </FooterLinkGroup>
       </div>
@@ -50,8 +50,9 @@
           Legal
         </h2>
         <FooterLinkGroup>
-          <p>Y2MP3</p>
-          <FooterLink liClass="mb-4" href="/">Terms & Conditions</FooterLink>
+          <FooterLink liClass="mb-4" href="/terms"
+            >Terms & Conditions</FooterLink
+          >
         </FooterLinkGroup>
       </div>
     </div>
