@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { env } from "$env/dynamic/public";
+  import { loading } from "./loading";
   import { global_selectedData } from "@store/data";
   import {
     Table,
@@ -9,9 +11,43 @@
     TableHeadCell,
   } from "flowbite-svelte";
   export let fileType: string;
+  let resultFileURL;
 
-  function handleClick(resolution: number, type: string) {
-    console.log(resolution, type);
+  async function handleClick(resolution: number, type: string) {
+    $loading = true;
+    const video_url = $global_selectedData.url;
+    const filename = $global_selectedData.title;
+    const to = fileType;
+
+    try {
+      const response = await fetch(
+        `${env.PUBLIC_API_VIDEO_DOWNLOAD_URL}?url=${video_url}&filename=${filename}&to=${to}&height=${resolution}`,
+        {
+          mode: "cors",
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+
+      // console.log(response);
+      const blob = await response.blob();
+      const file = new File([blob], `${filename}`, { type: blob.type });
+      // console.log(file);
+      resultFileURL = URL.createObjectURL(file);
+
+      const link = document.createElement("a");
+      link.href = resultFileURL;
+      link.download = `${filename}.${type}`;
+      link.click();
+    } catch (error) {
+      console.error(error);
+      alert(error);
+    } finally {
+      $loading = false;
+    }
   }
 </script>
 
@@ -50,7 +86,7 @@
       </TableHeadCell>
     </TableHead>
 
-    <TableBody class="divide-y">
+    <TableBody tableBodyClass="divide-y">
       {#each [360, 480, 720, 1080] as resolution}
         <TableBodyRow>
           <TableBodyCell
@@ -68,7 +104,7 @@
             >
               Download
             </a> -->
-            <button on:click={handleClick(resolution, fileType)}
+            <button on:click={() => handleClick(resolution, fileType)}
               >Download</button
             >
           </TableBodyCell>
