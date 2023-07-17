@@ -1,21 +1,15 @@
 <script lang="ts">
-  import SearchInput from "@components/SearchInput.svelte";
   import Banner from "@components/Banner.svelte";
   import Feature from "@components/Feature.svelte";
   import { Button, Search, Span } from "flowbite-svelte";
   import type { VideoType } from "@store/types";
-  import Video from "@components/Video.svelte";
   import { youTubeURL } from "@store/data";
   import { loading } from "@components/loading";
   import { env } from "$env/dynamic/public";
-  import VideoDetail from "@components/VideoDetail.svelte";
   import Info from "@components/Info.svelte";
 
-  let videos: VideoType[] = [];
-  let video_id = 0;
+  let video_info: VideoType;
   let urlInput = "";
-  let video_info;
-
   $: $youTubeURL;
 
   function handleChange(event: Event) {

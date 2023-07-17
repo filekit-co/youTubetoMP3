@@ -1,32 +1,24 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import {
-    FORMATS,
-    fileFormat,
-    global_selectedVideo,
-    global_selectedAudio,
-  } from "@store/data";
+  import { FORMATS, fileFormat, global_selectedData } from "@store/data";
+  import type { VideoType } from "@store/types";
   import { Label, Select, GradientButton } from "flowbite-svelte";
 
-  export let video_info;
+  export let video_info: VideoType;
 
   $: $fileFormat;
-  $: $global_selectedAudio;
-  $: $global_selectedVideo;
+  $: $global_selectedData;
 
   let selected = "best";
 
   function handleClick() {
     const audioFormats = ["aac", "m4a", "mp3", "ogg", "wav"];
-    const videoFormats = ["3gp", "flv", "mp4", "webm"];
 
-    if (audioFormats.includes(selected)) {
-      $fileFormat = "audio";
-      $global_selectedAudio = video_info;
-    } else if (videoFormats.includes(selected)) {
-      $fileFormat = "video";
-      $global_selectedVideo = video_info;
-    }
+    audioFormats.includes(selected)
+      ? ($fileFormat = "audio")
+      : ($fileFormat = "video");
+    $global_selectedData = video_info;
+
     goto(`youtube-to-${selected}`);
   }
 </script>

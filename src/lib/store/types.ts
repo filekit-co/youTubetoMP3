@@ -26,6 +26,7 @@ export type ConversionProps = {
 }
 
 export interface VideoType {
-  id: number;
   url: string;
+  thumbUrl: string;
+  title: string;
 }
