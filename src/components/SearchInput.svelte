@@ -1,8 +1,5 @@
 <script lang="ts">
-  import { goto } from "$app/navigation";
-  import { fileFormat, youTubeURL } from "@store/data";
-  import { Label, Button, Select, Search, NavHamburger } from "flowbite-svelte";
-  import { FORMATS } from "$lib/store/data.js";
+  import { Button, Search } from "flowbite-svelte";
   import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
@@ -17,6 +14,7 @@
   }
 
   function handleClick(event: Event) {
+    // $youTubeURL = urlInput;
     dispatch("handleUrl", urlInput);
     urlInput = "";
   }

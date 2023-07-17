@@ -1,16 +1,32 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { FORMATS, global_selectedAudio } from "@store/data";
+  import {
+    FORMATS,
+    fileFormat,
+    global_selectedVideo,
+    global_selectedAudio,
+  } from "@store/data";
   import { Label, Select, GradientButton } from "flowbite-svelte";
 
-  export let data;
-  export let video_id: number;
+  export let video_info;
 
+  $: $fileFormat;
   $: $global_selectedAudio;
+  $: $global_selectedVideo;
 
   let selected = "best";
 
   function handleClick() {
+    const audioFormats = ["aac", "m4a", "mp3", "ogg", "wav"];
+    const videoFormats = ["3gp", "flv", "mp4", "webm"];
+
+    if (audioFormats.includes(selected)) {
+      $fileFormat = "audio";
+      $global_selectedAudio = video_info;
+    } else if (videoFormats.includes(selected)) {
+      $fileFormat = "video";
+      $global_selectedVideo = video_info;
+    }
     goto(`youtube-to-${selected}`);
   }
 </script>
@@ -18,22 +34,22 @@
 <div class="sm:px-6 md:px-12 lg:px-12 py-2 mt-6">
   <div class="sm:col md:flex md:gap-6 lg:gap-10">
     <a
-      href={data.url}
+      href={video_info.url}
       class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
     >
       <img
         class="object-cover w-full rounded-t-lg h-full md:h-full md:w-48 md:rounded-none md:rounded-l-lg"
-        src={data.thumbUrl}
+        src={video_info.thumbUrl}
         alt=""
       />
       <div class="flex flex-col justify-between p-4 leading-normal">
         <h5
           class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
         >
-          {data.title}
+          {video_info.title}
         </h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          {data.url}
+          {video_info.url}
         </p>
       </div>
     </a>

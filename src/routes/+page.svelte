@@ -2,22 +2,41 @@
   import SearchInput from "@components/SearchInput.svelte";
   import Banner from "@components/Banner.svelte";
   import Feature from "@components/Feature.svelte";
-  import { Span } from "flowbite-svelte";
+  import { Button, Search, Span } from "flowbite-svelte";
   import type { VideoType } from "@store/types";
   import Video from "@components/Video.svelte";
+  import { youTubeURL } from "@store/data";
+  import { loading } from "@components/loading";
+  import { env } from "$env/dynamic/public";
+  import VideoDetail from "@components/VideoDetail.svelte";
+  import Info from "@components/Info.svelte";
 
   let videos: VideoType[] = [];
   let video_id = 0;
+  let urlInput = "";
+  let video_info;
 
-  function handleUrl(url) {
-    // console.log("Inputed data is: ", url.detail);
-    const data = {
-      id: ++video_id,
-      url: url.detail,
-    };
+  $: $youTubeURL;
 
-    videos = [...videos, data];
-    // console.log(videos);
+  function handleChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    urlInput = inputElement.value;
+    $youTubeURL = urlInput;
+  }
+
+  async function handleClick(event: Event) {
+    $loading = true;
+    const response = await fetch(`${env.PUBLIC_API_INFO_URL}?url=${urlInput}`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    video_info = await response.json();
+    $youTubeURL = urlInput;
+    urlInput = "";
+    $loading = false;
   }
 </script>
 
@@ -31,15 +50,20 @@
   </div>
 </section>
 
-<!-- 사용자 url 입력하는 곳 -->
-<!-- <SearchInput headText="YouYube URL" /> -->
-<SearchInput on:handleUrl={handleUrl} />
+<form class="flex sm:px-6 md:px-12 lg:px-12 py-2">
+  <Search
+    class="h-16 w-full"
+    on:change={handleChange}
+    placeholder="Please Type YouTube URL"
+    value={urlInput}
+  >
+    <Button class="my-2 py-2" on:click={handleClick}>Search</Button>
+  </Search>
+</form>
 
-{#each videos as video (video.id)}
-  <div>
-    <Video video_id={video.id} video_url={video.url} />
-  </div>
-{/each}
+{#if video_info}
+  <Info {video_info} />
+{/if}
 
 <!-- 회사 및 광고 -->
 <Banner />

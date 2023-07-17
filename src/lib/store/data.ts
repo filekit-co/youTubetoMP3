@@ -3,15 +3,23 @@ import {writable} from 'svelte/store'
 export const youTubeURL = writable('')
 export const fileFormat = writable('')
 
-export const global_selectedVideoId = writable(0)
-export const global_selectedVideoImg = writable('')
-export const global_selectedVideoUrl = writable('')
+
 export const global_selectedAudio = writable(
     {
         id: 0,
         url: '',
         thumbUrl: '',
         title: '',
+    }
+)
+
+export const global_selectedVideo = writable(
+    {
+        id: 0,
+        url: '',
+        thumbUrl: '',
+        title: '',
+        height: 0,
     }
 )
 
