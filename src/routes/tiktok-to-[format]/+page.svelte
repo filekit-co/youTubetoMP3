@@ -8,6 +8,7 @@
   import VideoTable from "@components/VideoTable.svelte";
   import { goto } from "$app/navigation";
   import { beforeUpdate } from "svelte";
+  import Description from "@components/Description.svelte";
 
   let params = $page.params.format;
 
@@ -42,6 +43,8 @@
 {/if}
 
 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+
+<Description socialMedia="TikTok" />
 
 <!-- 회사 및 광고 -->
 <Banner />

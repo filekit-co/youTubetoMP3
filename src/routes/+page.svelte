@@ -8,6 +8,7 @@
   import { env } from "$env/dynamic/public";
   import Info from "@components/Info.svelte";
   import Description from "@components/Description.svelte";
+  import { i } from "@inlang/sdk-js";
 
   let video_info: VideoType;
   let urlInput = "";
