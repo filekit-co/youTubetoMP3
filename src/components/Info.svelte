@@ -1,6 +1,11 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { FORMATS, fileFormat, global_selectedData } from "@store/data";
+  import {
+    FORMATS,
+    fileFormat,
+    global_selectedData,
+    youTubeURL,
+  } from "@store/data";
   import type { VideoType } from "@store/types";
   import { Label, Select, GradientButton } from "flowbite-svelte";
 
@@ -9,9 +14,22 @@
   $: $fileFormat;
   $: $global_selectedData;
 
-  let selected = "best";
+  let selected = "mp3";
+
+  function getRegexUrl() {
+    const origin = $youTubeURL;
+    const regex = /\/\/www\.([^/]+)\.com/;
+    const result = regex.exec(origin);
+    if (result && result.length > 1) {
+      const link = result[1];
+      // console.log(link); // 출력: "tiktok"
+      return link;
+    }
+  }
 
   function handleClick() {
+    const link = getRegexUrl();
+
     const audioFormats = ["aac", "m4a", "mp3", "ogg", "wav"];
 
     audioFormats.includes(selected)
@@ -19,7 +37,7 @@
       : ($fileFormat = "video");
     $global_selectedData = video_info;
 
-    goto(`youtube-to-${selected}`);
+    goto(`${link}-to-${selected}`);
   }
 </script>
 
@@ -41,7 +59,7 @@
           {video_info.title}
         </h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          {video_info.url}
+          {video_info.url.substring(0, 25)}
         </p>
       </div>
     </a>

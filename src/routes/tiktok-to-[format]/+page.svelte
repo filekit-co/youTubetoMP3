@@ -17,7 +17,7 @@
   beforeUpdate(() => {
     if (!$youTubeURL) {
       alert("Without URL. Please type youTube URL first.");
-      goto("/youtube");
+      goto("/tiktok");
     }
   });
 </script>
@@ -27,7 +27,7 @@
     <h2
       class="flex justify-center mb-4 lg:mb-10 font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white lg: text-5xl"
     >
-      YouTube to&nbsp;
+      TikTok to&nbsp;
       <p class="text-teal-200">{params}</p>
     </h2>
   </div>

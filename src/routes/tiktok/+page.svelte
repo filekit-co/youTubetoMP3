@@ -45,7 +45,7 @@
     <h2
       class="mb-4 lg:mb-10 font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white lg: text-5xl"
     >
-      <Span gradient>Download Video and Audio from YouTube</Span>
+      <Span gradient>Download Video and Audio from TikTok</Span>
     </h2>
   </div>
 </section>
