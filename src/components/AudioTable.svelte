@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { env } from "$env/dynamic/public";
+  import { loading } from "./loading";
   import { global_selectedData } from "@store/data";
   import {
     Table,
@@ -7,8 +9,44 @@
     TableBodyRow,
     TableHead,
     TableHeadCell,
+    GradientButton,
   } from "flowbite-svelte";
   export let fileType: string;
+  let resultFileURL;
+
+  async function handleClick(event: Event) {
+    $loading = true;
+    const audio_url = $global_selectedData.url;
+    const filename = $global_selectedData.title;
+    const to = fileType;
+
+    try {
+      const response = await fetch(
+        `${env.PUBLIC_API_AUDIO_DOWNLOAD_URL}?url=${audio_url}&filename=${filename}&to=${to}`,
+        {
+          mode: "cors",
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+      const blob = await response.blob();
+      const file = new File([blob], `${filename}`, { type: blob.type });
+      resultFileURL = URL.createObjectURL(file);
+
+      const link = document.createElement("a");
+      link.href = resultFileURL;
+      link.download = `${filename}.${to}`;
+      link.click();
+    } catch (error) {
+      console.error(error);
+      alert(error);
+    } finally {
+      $loading = false;
+    }
+  }
 </script>
 
 <div class="sm:px-6 md:px-12 lg:px-12 py-2 mt-6">
@@ -35,7 +73,7 @@
     </a>
   </div>
 
-  <Table class="sm:col-auto">
+  <Table>
     <TableHead>
       <TableHeadCell>File title</TableHeadCell>
 
@@ -45,7 +83,7 @@
         <span class="sr-only"> Edit </span>
       </TableHeadCell>
     </TableHead>
-    <TableBody class="divide-y">
+    <TableBody tableBodyClass="divide-y">
       <TableBodyRow>
         <TableBodyCell
           >{$global_selectedData.title.substring(0, 25)}</TableBodyCell
@@ -54,15 +92,9 @@
         <TableBodyCell>{fileType}</TableBodyCell>
 
         <TableBodyCell>
-          <!-- <a
-            target="_blank"
-            rel="noopener"
-            href={"/"}
-            download={$global_selectedData.title}
+          <GradientButton on:click={handleClick} color="cyanToBlue"
+            >Download</GradientButton
           >
-            Download
-          </a> -->
-          <button>Download</button>
         </TableBodyCell>
       </TableBodyRow>
     </TableBody>

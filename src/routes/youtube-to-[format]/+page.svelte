@@ -3,83 +3,23 @@
   import Banner from "@components/Banner.svelte";
   import Feature from "@components/Feature.svelte";
   import { page } from "$app/stores";
-  import { youTubeURL, fileFormat, global_selectedData } from "@store/data";
-  import { loading } from "@components/loading";
+  import { youTubeURL, fileFormat } from "@store/data";
   import AudioTable from "@components/AudioTable.svelte";
   import VideoTable from "@components/VideoTable.svelte";
+  import { goto } from "$app/navigation";
+  import { beforeUpdate } from "svelte";
 
   let params = $page.params.format;
-  let resultFileURL: string;
 
   $: $fileFormat;
   $: $youTubeURL;
 
-  // https://api-video-xgnu4lf2ea-uc.a.run.app/download/audio?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DgdZLi9oWNZg&filename=bts&to=mp3
-  const fetchDownloadAudio = async () => {
-    console.log($global_selectedData);
-    $loading = true;
-    try {
-      const audio_url = $global_selectedData.url;
-      const filename = $global_selectedData.title;
-      const to = params;
-      const response = await fetch(
-        `${env.PUBLIC_API_AUDIO_DOWNLOAD_URL}?url=${audio_url}&filename=${filename}&to=${to}`,
-        {
-          mode: "cors",
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
-
-      if (!(await response.ok)) {
-        throw new Error("Get Audio data failed.");
-      }
-
-      const blob = await response.blob();
-      const file = new File([blob], `${filename}`, { type: blob.type });
-      // console.log(file);
-      resultFileURL = URL.createObjectURL(file);
-      console.log(resultFileURL);
-    } catch (error) {
-      console.error(error);
+  beforeUpdate(() => {
+    if (!$youTubeURL) {
+      alert("Without URL. Please type youTube URL first.");
+      goto("/");
     }
-    $loading = false;
-  };
-
-  // https://api-video-xgnu4lf2ea-uc.a.run.app/download/video?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D9VSerKr1vBM&filename=bonjovi&to=avi&height=150
-  // https://api-video-xgnu4lf2ea-uc.a.run.app/download/video?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DIGSjMoxVF1A&filename=ss&to=mp4
-
-  const fetchDownloadVideo = async () => {
-    $loading = true;
-    try {
-      const video_url = $global_selectedData.url;
-      const filename = $global_selectedData.title;
-      const to = params;
-      const response = await fetch(
-        `${env.PUBLIC_API_VIDEO_DOWNLOAD_URL}?url=${video_url}&filename=${filename}&to=${to}`,
-        {
-          mode: "cors",
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
-
-      console.log(response);
-      const blob = await response.blob();
-      const file = new File([blob], `${filename}`, { type: blob.type });
-      // console.log(file);
-      resultFileURL = URL.createObjectURL(file);
-    } catch (error) {
-      console.error(error);
-    }
-    $loading = false;
-  };
+  });
 </script>
 
 <section class="bg-base-200">
@@ -93,10 +33,12 @@
   </div>
 </section>
 
-{#if $fileFormat === "audio"}
-  <AudioTable fileType={params} />
-{:else}
-  <VideoTable fileType={params} />
+{#if $youTubeURL}
+  {#if $fileFormat === "audio"}
+    <AudioTable fileType={params} />
+  {:else}
+    <VideoTable fileType={params} />
+  {/if}
 {/if}
 
 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />

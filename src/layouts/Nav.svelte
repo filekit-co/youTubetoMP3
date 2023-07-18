@@ -25,9 +25,8 @@
   <NavUl {hidden}>
     <NavLi href="/" active={true}>Home</NavLi>
 
-    <NavLi href="/youtube/download">YouTube Download</NavLi>
-    <NavLi href="/youtube/to-mp3">YouTube to MP3</NavLi>
-    <NavLi href="/youtube/to-any">YoutTube to Any</NavLi>
+    <NavLi href="/youtube-to-mp3">YouTube to MP3</NavLi>
+    <NavLi href="/youtube-to-mp4">YoutTube to Any</NavLi>
     <NavLi id="nav-menu1" class="cursor-pointer"
       ><Chevron aligned>Language</Chevron></NavLi
     >

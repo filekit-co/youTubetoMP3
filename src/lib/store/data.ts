@@ -10,6 +10,8 @@ export const global_selectedData = writable(
         title: '',
     }
 )
+// audio x is types of ('best', 'mp3', 'aac', 'm4a', 'opus', 'vorbis', 'flac', 'alac', 'wav')
+
 
 export const FORMATS = [
     { value: "best", name: "BEST" },
@@ -18,6 +20,10 @@ export const FORMATS = [
     { value: "aac", name: "ACC" },
     { value: "m4a", name: "M4A" },
     { value: "ogg", name: "OGG" },
+    { value: 'opus', name: 'OPUS'},
+    { value: 'vorbis', name: 'VORBIS'},
+    { vlaue: 'flac', name: 'FLAC'},
+    { value: 'alac', name: 'ALAC'},
 
     { value: "mp4", name: "MP4" },
     { value: "flv", name: "FLV" },

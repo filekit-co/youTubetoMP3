@@ -19,6 +19,11 @@
   }
 
   async function handleClick(event: Event) {
+    if (urlInput === "") {
+      alert("Please type youTube URL");
+      return;
+    }
+
     $loading = true;
     const response = await fetch(`${env.PUBLIC_API_INFO_URL}?url=${urlInput}`, {
       method: "POST",

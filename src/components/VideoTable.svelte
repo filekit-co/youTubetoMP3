@@ -3,6 +3,7 @@
   import { loading } from "./loading";
   import { global_selectedData } from "@store/data";
   import {
+    GradientButton,
     Table,
     TableBody,
     TableBodyCell,
@@ -96,16 +97,9 @@
           <TableBodyCell>32MB</TableBodyCell>
 
           <TableBodyCell>
-            <!-- <a
-              target="_blank"
-              rel="noopener"
-              href={"/"}
-              download={$global_selectedData.title}
-            >
-              Download
-            </a> -->
-            <button on:click={() => handleClick(resolution, fileType)}
-              >Download</button
+            <GradientButton
+              on:click={() => handleClick(resolution, fileType)}
+              color="cyanToBlue">Download</GradientButton
             >
           </TableBodyCell>
         </TableBodyRow>
