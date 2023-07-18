@@ -7,6 +7,7 @@
   import { loading } from "@components/loading";
   import { env } from "$env/dynamic/public";
   import Info from "@components/Info.svelte";
+  import Description from "@components/Description.svelte";
 
   let video_info: VideoType;
   let urlInput = "";
@@ -64,6 +65,8 @@
 {#if video_info}
   <Info {video_info} />
 {/if}
+
+<Description socialMedia="TikTok" />
 
 <!-- 회사 및 광고 -->
 <Banner />
