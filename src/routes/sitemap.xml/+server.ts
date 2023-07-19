@@ -1,5 +1,5 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import { allPages } from "$lib/data/pages";
+import { allHrefs, languageCodes} from '$lib/data'
 
 export const prerender = true;
 const baseSite = 'https://youtubetomp3.pages.dev'
@@ -17,15 +17,17 @@ export const GET = (() => {
     return new Response(body, options);
 })satisfies RequestHandler; 
 
-const getAllUrls = (site:string) => {
+const getAllUrls = (site: string) => {
   const urls: string[] = [];
-
-  allPages.map((item) => {
-    const url = `${site}/${item.href}`
-    urls.push(url)
-  })
-
-  return urls;
+  
+  // 각 언어 코드로 생성하는 URL
+  for (const lang of languageCodes) {
+    for (const href of allHrefs) {
+      const url = href ? `${site}/${lang}/${href}` : `${site}/${lang}`;
+      urls.push(url);
+    }
+  }
+  return urls
 }
 
 const sitemap = (urls: string[]) => `<?xml version="1.0" encoding="UTF-8" ?>

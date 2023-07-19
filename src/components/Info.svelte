@@ -37,7 +37,8 @@
       : ($fileFormat = "video");
     $global_selectedData = video_info;
 
-    goto(`${link}-to-${selected}`);
+    // Todo: 이동할 href = /언어/ 앞에 넣어줘야한다.
+    goto(`/ko/${link}-to-${selected}`);
   }
 </script>
 

@@ -24,7 +24,6 @@ export const FORMATS = [
     { value: 'vorbis', name: 'VORBIS'},
     { vlaue: 'flac', name: 'FLAC'},
     { value: 'alac', name: 'ALAC'},
-
     { value: "flv", name: "FLV" },
     { value: "3gp", name: "3GP" },
     { value: "webm", name: "WEBM" },
