@@ -1,5 +1,5 @@
 import type { UpdateHeaderProps, UpdateFeatureProps } from '@store/types.js'
-import { canonicalUrl } from '@store/utils.js'
+import { canonicalUrl } from '$lib/utils.js'
 
 
 export const load = ({route}) => {

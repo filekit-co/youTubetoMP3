@@ -8,6 +8,7 @@
   import { env } from "$env/dynamic/public";
   import Info from "@components/Info.svelte";
   import Description from "@components/Description.svelte";
+  import { i } from "@inlang/sdk-js";
 
   let video_info: VideoType;
   let urlInput = "";
@@ -46,7 +47,7 @@
     <h2
       class="mb-4 lg:mb-10 font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white lg: text-5xl"
     >
-      <Span gradient>Download Video and Audio from YouTube</Span>
+      <Span gradient>{i("Download Video and Audio from YouTube")}</Span>
     </h2>
   </div>
 </section>
