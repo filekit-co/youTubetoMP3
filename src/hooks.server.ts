@@ -1,3 +1,4 @@
+import '@inlang/sdk-js/no-transforms'
 import { languageCodes, referenceLanguage } from '$lib/data/locale';
 import { detectLanguageOrFallback } from '$lib/store/utils';
 import {  addRuntimeToLocals, initSvelteKitServerRuntime } from '@inlang/sdk-js/adapter-sveltekit/server'

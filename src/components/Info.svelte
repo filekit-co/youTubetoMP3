@@ -8,6 +8,7 @@
   } from "@store/data";
   import type { VideoType } from "@store/types";
   import { Label, Select, GradientButton } from "flowbite-svelte";
+  import { language } from "@inlang/sdk-js";
 
   export let video_info: VideoType;
 
@@ -38,7 +39,7 @@
     $global_selectedData = video_info;
 
     // Todo: 이동할 href = /언어/ 앞에 넣어줘야한다.
-    goto(`/ko/${link}-to-${selected}`);
+    goto(`/${language}/${link}-to-${selected}`);
   }
 </script>
 
