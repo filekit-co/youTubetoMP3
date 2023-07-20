@@ -8,7 +8,7 @@
     keywords:
       "Convert YouTube videos to MP3, Download YouTube video, Convert a YouTube video to any format",
     siteName: "filekit.co - YouTube to MP3",
-    url: "https://youtubetomp3.pages.dev/",
+    url: "https://www.filekit.co",
     image: "",
     description:
       "Filekit - Easy tool to convert YouTube videos to MP3. Convert files into the desired format with just one click. Free for lifetime usage.",

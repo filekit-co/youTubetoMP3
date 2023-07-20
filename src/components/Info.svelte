@@ -9,6 +9,7 @@
   import type { VideoType } from "@store/types";
   import { Label, Select, GradientButton } from "flowbite-svelte";
   import { language } from "@inlang/sdk-js";
+  import { i } from "@inlang/sdk-js";
 
   export let video_info: VideoType;
 
@@ -75,7 +76,7 @@
       />
 
       <GradientButton on:click={handleClick} class="w-full" color="greenToBlue"
-        >Convert</GradientButton
+        >{i("Convert")}</GradientButton
       >
     </Label>
   </div>

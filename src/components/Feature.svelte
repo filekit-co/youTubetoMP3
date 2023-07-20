@@ -10,21 +10,23 @@
     RocketOutline,
     CloseCircleSolid,
   } from "flowbite-svelte-icons";
+  import { i } from "@inlang/sdk-js";
 
   export let bgColor: string = "";
 
   const defaultFeatureProps: FeatureProps = {
-    head1: "YouTube video Convert into MP3, MP4, any formats Services",
-    head2: "Best file conversion and Image removal software",
-    description:
-      "We offer a wide range of file conversion, compression, and background removal services to meet your needs. Whether you need to convert a document to PDF, compress a large file, or remove the background from an image, we can help. Our services are easy to use and affordable.",
+    head1: i("The best TikTok to MP3 Converter & Downloader"),
+    head2: i(
+      "Download MP3 files from TikTok videos and save them on your computer"
+    ),
+    description: i("The faster TikTok to MP3 video downloader ever created!"),
     subHead: [
-      "Convenient Conversion",
-      "Flawless Background Image Removal",
-      "Fast Speed",
-      "Completely Free",
-      "Security",
-      "Support for All Devices",
+      i("Fast TikTok to MP3 conversion"),
+      i("Free video downloader"),
+      i("Download TikTok videos without software"),
+      i("Select a TikTok video"),
+      i("Paste the TikTok URL link"),
+      i("Download TikTok video to MP3"),
     ],
     subImage: [
       RotateOutline,
@@ -35,12 +37,22 @@
       MobilePhoneOutline,
     ],
     subDescription: [
-      "By simply performing three actions: dragging and dropping files, clicking the conversion button, and checking the resulting file, you can obtain the desired output easily. With these simple steps, you can achieve the desired results.",
-      "We provide a feature that flawlessly removes the background image from your photos.",
-      "Drag and drop your document or image file and click the button. We aim to provide all results within 2 minutes.",
-      "All file conversions and background image removal are completely free.",
-      "We do not use uploaded files for commercial purposes. No one can access the user's files, ensuring complete privacy protection.",
-      "Converto works on all platforms, including browsers, tablets, and mobile devices.",
+      i(
+        "Filekit.co is by far the fastest online video converter in the world."
+      ),
+      i(
+        "This TikTok to MP3 video downloader is free for everyone and forever."
+      ),
+      i(
+        "You can convert a TikTok video to MP3 anonymously, we are not collecting your personal data."
+      ),
+      i(
+        "Visit TikTok website, find and play the video you want to download and copy it's URL link."
+      ),
+      i(
+        "Paste the TikTok video URL link in the above search field to start MP3 conversion."
+      ),
+      i("Click the save button to download the TikTok video in MP3"),
     ],
   };
 

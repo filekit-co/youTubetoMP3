@@ -23,7 +23,7 @@
 
   async function handleClick(event: Event) {
     if (urlInput === "") {
-      alert("Please type youTube URL");
+      alert(i("Please type YouTube URL first!"));
       return;
     }
 
@@ -59,7 +59,7 @@
     placeholder="Please Type YouTube URL"
     value={urlInput}
   >
-    <Button class="my-2 py-2" on:click={handleClick}>Search</Button>
+    <Button class="my-2 py-2" on:click={handleClick}>{i("Search")}</Button>
   </Search>
 </form>
 

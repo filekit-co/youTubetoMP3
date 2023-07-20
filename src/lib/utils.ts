@@ -4,7 +4,7 @@ import {initAcceptLanguageHeaderDetector, initRootSlugDetector} from '$lib/lang-
 import {detectLanguage, type Detector} from '@inlang/sdk-js/detectors'
 
 
-export const canonicalUrl = (route: string) => `${PUBLIC_BASE_URL}${route}`;
+export const canonicalUrl = (pathname: string) => pathname ? `${PUBLIC_BASE_URL}${pathname}`: `${PUBLIC_BASE_URL}`;
 
 export const detectLanguageOrFallback = async (url: URL |undefined ,headers: Headers | undefined, referenceLanguage: string) => {
   // FYI detectors prioritize orders if first detector match lang, it returns lang directly.
