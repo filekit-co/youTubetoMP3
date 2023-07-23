@@ -68,7 +68,7 @@
   </div>
 </section>
 
-<form class="px-10 md:px-25 lg:px-48 pt-8">
+<form class="px-4 sm:px-7 md:px-25 lg:px-48 pt-8">
   <Search
     class="h-14"
     on:change={handleChange}
