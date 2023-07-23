@@ -21,17 +21,20 @@
     const to = fileType;
 
     try {
-      const response = await fetch(
-        `${env.PUBLIC_API_VIDEO_DOWNLOAD_URL}?url=${video_url}&filename=${filename}&to=${to}&height=${resolution}`,
-        {
-          mode: "cors",
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
+      const response = await fetch(env.PUBLIC_API_VIDEO_DOWNLOAD_URL, {
+        mode: "cors",
+        method: "POST",
+        body: JSON.stringify({
+          url: video_url,
+          filename,
+          to,
+          height: resolution,
+        }),
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+      });
 
       // console.log(response);
       const blob = await response.blob();

@@ -21,17 +21,19 @@
     const to = fileType;
 
     try {
-      const response = await fetch(
-        `${env.PUBLIC_API_AUDIO_DOWNLOAD_URL}?url=${audio_url}&filename=${filename}&to=${to}`,
-        {
-          mode: "cors",
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
+      const response = await fetch(env.PUBLIC_API_AUDIO_DOWNLOAD_URL, {
+        mode: "cors",
+        method: "POST",
+        body: JSON.stringify({
+          url: audio_url,
+          filename,
+          to,
+        }),
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+      });
       const blob = await response.blob();
       const file = new File([blob], `${filename}`, { type: blob.type });
       resultFileURL = URL.createObjectURL(file);

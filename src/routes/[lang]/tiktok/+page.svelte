@@ -27,12 +27,15 @@
     }
 
     $loading = true;
-    const response = await fetch(`${env.PUBLIC_API_INFO_URL}?url=${urlInput}`, {
+    const response = await fetch(env.PUBLIC_API_INFO_URL, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
         Accept: "application/json",
       },
+      body: JSON.stringify({
+        url: urlInput,
+      }),
     });
     video_info = await response.json();
     $youTubeURL = urlInput;

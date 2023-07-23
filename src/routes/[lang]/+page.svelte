@@ -1,7 +1,7 @@
 <script lang="ts">
   import Banner from "@components/Banner.svelte";
   import Feature from "@components/Feature.svelte";
-  import { Button, Search, Span } from "flowbite-svelte";
+  import { Button, Search } from "flowbite-svelte";
   import type { VideoType } from "@store/types";
   import { youTubeURL } from "@store/data";
   import { loading } from "@components/loading";
@@ -21,24 +21,40 @@
     $youTubeURL = urlInput;
   }
 
-  async function handleClick(event: Event) {
-    if (urlInput === "") {
-      alert(i("Please type YouTube URL first!"));
-      return;
-    }
-
-    $loading = true;
-    const response = await fetch(`${env.PUBLIC_API_INFO_URL}?url=${urlInput}`, {
+  const fetchData = async (url: string): Promise<any> => {
+    const response = await fetch(env.PUBLIC_API_INFO_URL, {
       method: "POST",
+      body: JSON.stringify({
+        url,
+      }),
       headers: {
         "Content-type": "application/json",
         Accept: "application/json",
       },
     });
-    video_info = await response.json();
-    $youTubeURL = urlInput;
-    urlInput = "";
-    $loading = false;
+    return await response.json();
+  };
+
+  const validateInput = (input: string): boolean => {
+    if (!input) {
+      alert(i("Please type YouTube URL first!"));
+      return false;
+    }
+    return true;
+  };
+
+  async function handleClick(event: Event) {
+    if (!validateInput(urlInput)) {
+      return;
+    }
+    try {
+      $loading = true;
+      video_info = await fetchData(urlInput);
+      $youTubeURL = urlInput;
+    } finally {
+      urlInput = "";
+      $loading = false;
+    }
   }
 </script>
 
