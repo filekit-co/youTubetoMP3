@@ -1,5 +1,4 @@
 import type { UpdateHeaderProps, UpdateFeatureProps } from '@store/types.js'
-import { canonicalUrl } from '$lib/utils.js'
 import { getRuntimeFromLocals } from '@inlang/sdk-js/adapter-sveltekit/server';
 
 
@@ -8,7 +7,7 @@ export const load = ({url, locals}) => {
 
   const headerProps: UpdateHeaderProps = {
       title: i('Convert TikTok video to MP3, MP4 and download'),
-      url: canonicalUrl(url?.pathname ?? ''),      description: i('Convert TikTok videos to MP3, MP4, or any other format of your choice and download them.'),
+      description: i('Convert TikTok videos to MP3, MP4, or any other format of your choice and download them.'),
       keywords: i('TikTok to MP3, TikTok to MP4, TikTok to WAV, TikTok to AAC, TikTok to M4A, TikTok to OGG, TikTok to OPUS, TikTok to VORBIS, TikTok to FLAC, TikTok to ALAC, TikTok to FLV, TikTok to 3GP, TikTok to WEBM')
   };
   const featureProps: UpdateFeatureProps = {

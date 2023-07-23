@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import { canonicalUrl } from "$lib/utils";
   import type { HeaderProps, UpdateHeaderProps } from "@store/types";
 
   const defaultHeaderProps: HeaderProps = {
@@ -8,7 +9,7 @@
     keywords:
       "Convert YouTube videos to MP3, Download YouTube video, Convert a YouTube video to any format",
     siteName: "filekit.co - YouTube to MP3",
-    url: "https://www.filekit.co",
+    url: canonicalUrl($page.url?.pathname ?? ""),
     image: "",
     description:
       "Filekit - Easy tool to convert YouTube videos to MP3. Convert files into the desired format with just one click. Free for lifetime usage.",

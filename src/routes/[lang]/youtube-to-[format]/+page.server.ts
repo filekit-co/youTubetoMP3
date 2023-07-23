@@ -1,5 +1,4 @@
 import type { UpdateHeaderProps, UpdateFeatureProps } from '@store/types.js'
-import { canonicalUrl } from '$lib/utils.js'
 import { getRuntimeFromLocals } from '@inlang/sdk-js/adapter-sveltekit/server';
 
 
@@ -8,7 +7,6 @@ export const load = ({url, locals}) => {
 
   const headerProps: UpdateHeaderProps = {
       title: i('Convert YouTube video to MP3, MP4 and download'),
-      url: canonicalUrl(url?.pathname ?? ''),
       description: i('Convert YouTube videos to MP3, MP4, or any other format of your choice and download them.'),
       keywords: i('YouTube to MP3, youTube to MP4, youTube to WAV, youTube to AAC, youTube to M4A, youTube to OGG, youTube to OPUS, youTube to VORBIS, youTube to FLAC, youTube to ALAC, youTube to FLV, youTube to 3GP, youTube to WEBM')
   };
