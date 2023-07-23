@@ -15,7 +15,7 @@
     <div
       class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400"
     >
-      <a class="flex justify-center items-center">
+      <a href="https://filekit.co" class="flex justify-center items-center">
         <svg
           class="h-9 hover:text-gray-900 dark:hover:text-white"
           viewBox="0 0 125 35"

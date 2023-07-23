@@ -83,8 +83,6 @@
     <TableHead>
       <TableHeadCell>File title</TableHeadCell>
       <TableHeadCell>File Height</TableHeadCell>
-      <TableHeadCell>File size</TableHeadCell>
-
       <TableHeadCell>
         <span class="sr-only"> Edit </span>
       </TableHeadCell>
@@ -94,11 +92,11 @@
       {#each [360, 480, 720, 1080] as resolution}
         <TableBodyRow>
           <TableBodyCell
-            >{$global_selectedData.title.substring(0, 25)}</TableBodyCell
+            tdClass="px-6 py-4 whitespace-nowrap font-medium text-xs lg:text-md"
+            >{$global_selectedData.title.substring(0, 20)}</TableBodyCell
           >
-          <TableBodyCell>{resolution}p</TableBodyCell>
-          <TableBodyCell>32MB</TableBodyCell>
 
+          <TableBodyCell>{resolution}p</TableBodyCell>
           <TableBodyCell>
             <GradientButton
               on:click={() => handleClick(resolution, fileType)}

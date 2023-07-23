@@ -4,12 +4,13 @@
 </script>
 
 <div class="w-full px-2 py-8 sm:px-20 lg:px-32 text-center mx-auto">
+  <hr class="h-px my-10 bg-gray-200 border-0 dark:bg-gray-700" />
   <div class="join">
-    <h2 class="text-[clamp(2rem,6vw,4.5rem)] font-black join-item">
+    <h2 class="text-3xl font-black join-item">
       <span class="text-[#FF0000]">{socialMedia}</span> to&nbspMP3
     </h2>
   </div>
-  <p class="text-base-content/60 font-title py-4 font-light md:text-2xl">
+  <p class="text-base-content/60 font-title py-4 font-light md:text-lg">
     {i(`The best YouTube or TikTok video to MP3 Converter & Downloader`)}
   </p>
   <div class="mt-12 rounded-2xl bg-gray-100 leading-loose">

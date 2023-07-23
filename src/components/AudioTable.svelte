@@ -88,7 +88,8 @@
     <TableBody tableBodyClass="divide-y">
       <TableBodyRow>
         <TableBodyCell
-          >{$global_selectedData.title.substring(0, 25)}</TableBodyCell
+          tdClass="px-6 py-4 whitespace-nowrap font-medium text-xs lg:text-md"
+          >{$global_selectedData.title.substring(0, 20)}</TableBodyCell
         >
 
         <TableBodyCell>{fileType}</TableBodyCell>

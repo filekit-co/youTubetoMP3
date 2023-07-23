@@ -58,24 +58,24 @@
   }
 </script>
 
-<section class="bg-base-200">
-  <div class="lg:py-4 mx-auto max-w-screen-xl px-4">
+<section class="bg-base-200 pt-20">
+  <div class="mx-auto max-w-screen-xl px-4">
     <h2
-      class="mb-4 lg:mb-10 font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white lg: text-5xl"
+      class="text-2xl lg:text-4xl font-black text-center text-gray-900 dark:text-white"
     >
-      <Span gradient>{i("Download Video and Audio from YouTube")}</Span>
+      {i("Download Video or Audio for free")}
     </h2>
   </div>
 </section>
 
-<form class="flex sm:px-6 md:px-12 lg:px-12 py-2">
+<form class="px-10 md:px-25 lg:px-48 pt-8">
   <Search
-    class="h-16 w-full"
+    class="h-14"
     on:change={handleChange}
-    placeholder="Please Type YouTube URL"
+    placeholder={i("Type URL...")}
     value={urlInput}
   >
-    <Button class="my-2 py-2" on:click={handleClick}>{i("Search")}</Button>
+    <Button size="md" color="red" on:click={handleClick}>{i("Search")}</Button>
   </Search>
 </form>
 
