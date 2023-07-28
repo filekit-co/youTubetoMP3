@@ -18,19 +18,34 @@
 
   let selected = "mp3";
 
-  function getRegexUrl() {
-    const origin = $youTubeURL;
-    const regex = /\/\/www\.([^/]+)\.com/;
+  // youtube, tiktok, twitter ...
+  // List: https://github.com/yt-dlp/yt-dlp#extractor-arguments
+
+  // 1. tiktok
+  // https://www.tiktok.com/@txt.bighitent/video/7244933781281361154?is_from_webapp=1&sender_device=pc
+  // 2. youtube
+  // https://youtu.be/HIQ0dd7B_FU
+  // https://www.youtube.com/watch?v=XwZpvOhEdOs
+  // 3. twitter
+  // https://twitter.com/newjeansroom/status/1682919896886419456?s=20
+  // https://twitter.com/PassengersMovie/status/821025484150423557
+  const getVendorByRegex = (origin: string) => {
+    const fallbackVendor = "youtube";
+
+    const regex = /\/\/(?:www\.)?([^.]+)\./;
     const result = regex.exec(origin);
     if (result && result.length > 1) {
-      const link = result[1];
-      // console.log(link); // 출력: "tiktok"
-      return link;
+      let vendor = result[1];
+      if (vendor === "youtu") {
+        vendor = "youtube";
+      }
+      return vendor;
     }
-  }
+    return fallbackVendor;
+  };
 
   function handleClick() {
-    const link = getRegexUrl();
+    const vendor = getVendorByRegex($youTubeURL);
 
     const audioFormats = ["aac", "m4a", "mp3", "ogg", "wav"];
 
@@ -39,12 +54,11 @@
       : ($fileFormat = "video");
     $global_selectedData = video_info;
 
-    // Todo: 이동할 href = /언어/ 앞에 넣어줘야한다.
-    goto(`/${language}/${link}-to-${selected}`);
+    goto(`/${language}/${vendor}-to-${selected}`);
   }
 </script>
 
-<div class="sm:px-6 md:px-12 lg:px-12 py-2 mt-6">
+<div class="sm:px-6 md:px-12 py-2 mt-6">
   <div class="sm:col md:flex md:gap-6 lg:gap-10">
     <a
       href={video_info.url}
